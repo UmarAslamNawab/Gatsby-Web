@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -13,8 +15,21 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve:'gatsby-source-contentful',
+      options:{
+        spaceId:'yelvfgmpkybb',
+        accessToken: process.env.CONTENTFUL_API_TOKEN ,
+      }
+    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+     { resolve:`gatsby-source-filesystem`,
+       options:{
+         path: 'boop',
+       }
+      },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
